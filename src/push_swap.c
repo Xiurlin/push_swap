@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/25 17:11:22 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/27 02:53:59 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
+	size_t	i;
 	//t_list	*stack_b;
 
+	i = 1;
 	if (argc <= 1)
-		exit(1);
+		return(1);
+	error_checker(argv);
 	if (1 < argc <= 3)
 		two_or_three_numbers(&stack_a);
 	

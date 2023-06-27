@@ -6,7 +6,7 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/03 00:07:08 by drestrep          #+#    #+#              #
-#    Updated: 2023/06/24 10:15:36 by drestrep         ###   ########.fr        #
+#    Updated: 2023/06/27 03:58:31 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ OBJS			= $(SRCS:.c=.o)
 
 BONUS_OBJS		= $(BONUS:.c=.o)
 
+FT_PRINTF_DIR	= ft_printf
+FT_PRINTF		= $(FT_PRINTF_DIR)/ft_printf.a
+
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
@@ -67,7 +70,7 @@ NAME			= libft.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) $(FT_PRINTF)
 				@ar rcs $(NAME) $(OBJS)
 
 $(OBJS):		$(SRCS)
@@ -85,6 +88,9 @@ bonus:			$(OBJS) $(BONUS_OBJS)
 
 $(BONUS_OBJS):	$(BONUS)
 				@$(CC) $(CFLAGS) -c $^
+
+$(FT_PRINTF)
+				@make -C $(FT_PRINTF_DIR)
 
 clean:
 				@$(RM) $(OBJS) $(BONUS_OBJS)

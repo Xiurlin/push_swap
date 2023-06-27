@@ -6,11 +6,11 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/25 17:09:13 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/27 00:24:21 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void    two_or_three_numbers(t_list **stack_a)
 {

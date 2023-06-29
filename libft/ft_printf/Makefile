@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: drestrep <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 07:07:13 by drestrep          #+#    #+#              #
-#    Updated: 2023/04/14 05:46:49 by drestrep         ###   ########.fr        #
+#    Updated: 2023/06/29 03:15:24 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,23 +25,19 @@ OBJS		=	$(SRCS:.c=.o)
 CC			=	gcc
 RM			= 	rm -f
 CFLAGS		= 	-Wall -Wextra -Werror
-#SRCS_PATH	= 	ft_printf_utils/
 
 NAME		= 	libftprintf.a
 
 all:			$(NAME)
 
-#%.o: $(SRCS_PATH)%.c
-#	$(CC) $(FLAGS) -I -c -o $@ $<
-
 $(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+				@ar rcs $(NAME) $(OBJS)
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
+				@$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
 re:				fclean all
 

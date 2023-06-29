@@ -6,24 +6,26 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/27 02:53:59 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/29 02:06:17 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	main(int argc, char *argv[])
 {
-	t_list	*stack_a;
-	size_t	i;
-	//t_list	*stack_b;
+	t_list	**stack_a;
+	t_list	**stack_b;
+	//size_t	i;
 
-	i = 1;
+	//i = 1;
 	if (argc <= 1)
 		return(1);
 	error_checker(argv);
-	if (1 < argc <= 3)
-		two_or_three_numbers(&stack_a);
+	stack_b = NULL;
+	initialize(stack_a, argc, argv);
+	if (argc <= 5)
+		sort_small_number(&stack_a);
 	
 	return (0);
 }

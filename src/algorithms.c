@@ -6,18 +6,22 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/27 00:24:21 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/28 00:43:39 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+void    sort_small_number(t_list **stack_a, t_list **stack_b, int argc)
+{
+    if (argc <= 3)
+        two_or_three_numbers(stack_a);
+}
+
 void    two_or_three_numbers(t_list **stack_a)
 {
     t_list  *aux;
 
-    if (!stack_a)
-        return(0);
     aux = *stack_a;
     
     if (aux->content > aux->next->content &&

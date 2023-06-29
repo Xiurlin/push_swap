@@ -6,7 +6,7 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/03 00:07:08 by drestrep          #+#    #+#              #
-#    Updated: 2023/06/27 03:58:31 by drestrep         ###   ########.fr        #
+#    Updated: 2023/06/29 03:22:34 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ bonus:			$(OBJS) $(BONUS_OBJS)
 $(BONUS_OBJS):	$(BONUS)
 				@$(CC) $(CFLAGS) -c $^
 
-$(FT_PRINTF)
+$(FT_PRINTF):
 				@make -C $(FT_PRINTF_DIR)
 
 clean:
@@ -104,6 +104,7 @@ clean:
 
 fclean:			clean
 				@$(RM) $(NAME)
+				@make fclean -C $(FT_PRINTF_DIR)
 
 re:				fclean $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:23:45 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/27 00:56:08 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/30 01:58:46 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void    rotate_a(t_list **lst)
     aux = ((*lst)->next);
     ft_lstadd_back(lst, (*lst));
     (*lst) = aux;
-    if (rotate_a != rotate)
-        write(1,"ra\n", 3);
+    write(1,"ra\n", 3);
 }
 
 void    rotate_b(t_list **lst)
@@ -34,8 +33,7 @@ void    rotate_b(t_list **lst)
     aux = ((*lst)->next);
     ft_lstadd_back(lst, (*lst));
     (*lst) = aux;
-    if (rotate_b != rotate)
-        write(1,"rb\n", 3);
+    write(1,"rb\n", 3);
 }
 
 void    rotate(t_list **lst_a, t_list **lst_b)
@@ -65,8 +63,7 @@ void    revrotate_a(t_list **lst)
     second2last->next = NULL;
     last->next = (*lst);
     (*lst) = last;
-    if (revrotate_a != revrotate)
-        write(1,"rra\n", 4);
+    write(1,"rra\n", 4);
 }
 
 void    revrotate_b(t_list **lst)
@@ -86,8 +83,7 @@ void    revrotate_b(t_list **lst)
     second2last->next = NULL;
     last->next = (*lst);
     (*lst) = last;
-    if (revrotate_b != revrotate)
-        write(1,"rrb\n", 4);
+    write(1,"rrb\n", 4);
 }
 
 void    revrotate(t_list **lst_a, t_list **lst_b)

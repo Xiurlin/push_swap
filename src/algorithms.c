@@ -6,49 +6,102 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/28 00:43:39 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/30 04:28:00 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void    sort_small_number(t_list **stack_a, t_list **stack_b, int argc)
+void    sort_small_number(t_list **stack_a, int argc)
 {
-    if (argc <= 3)
-        two_or_three_numbers(stack_a);
-}
-
-void    two_or_three_numbers(t_list **stack_a)
-{
-    t_list  *aux;
-
-    aux = *stack_a;
+    argc--;
+    if (argc == 2)
+    {
+        two_numbers(stack_a);
+        return ;
+    }
+    if (argc == 3)
+    {
+        three_numbers(stack_a);
+        return ;
+    }
+    /*
+    if (argc == 4)
+    {
+        four_numbers(stack_a, stack_b);
+        return ;
+    }
     
-    if (aux->content > aux->next->content &&
-        aux->next->content < aux->next->next->content &&
-        aux->content < aux->next->next->content)
-        swap_a(aux);
-
-    if (aux->content > aux->next->content &&
-        aux->next->content > aux->next->next->content &&
-        aux->content > aux->next->next->content)
+    if (argc == 5)
     {
-        swap_a(aux);
-        revrotate_a(aux);
+        five_numbers(stack_a, stack_b);
+        return ;
     }
-    if (aux->content > aux->next->content &&
-        aux->next->next < aux->next->next->next &&
-        aux->content > aux->next->next->next)
-        rotate_a(aux);
-    if (aux->content < aux->next->content &&
-        aux->next->next > aux->next->next->next &&
-        aux->content < aux->next->next->next)
-    {
-        swap_a(aux);
-        rotate_a(aux);
-    }
-    if (aux->content < aux->next->content &&
-        aux->next->next > aux->next->next->next &&
-        aux->content > aux->next->next->next)
-        revrotate_a(aux);
+    */
 }
+
+void printLinkedList(t_list* head)
+{
+    t_list* current;
+    current = head;
+
+    while (current != NULL) {
+        printf("%d ", *(int*)current->content);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+void    two_numbers(t_list **stack)
+{
+    if (*(int *)(*stack)->content < *(int *)(*stack)->next->content)
+        swap_a(stack);
+}
+
+void    three_numbers(t_list **stack)
+{
+    //printf("Hola\n");
+    if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
+        *(int *)(*stack)->next->content < *(int *)(*stack)->next->next->content &&
+        *(int *)(*stack)->content < *(int *)(*stack)->next->next->content)
+    {
+        printf("Hola\n");
+        swap_a((stack));
+    }
+    if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
+        *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
+        *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
+    {
+        printf("Hola\n");
+        swap_a((stack));
+        revrotate_a((stack));
+    }
+    if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
+        *(int *)(*stack)->next->content < *(int *)(*stack)->next->next->content &&
+        *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
+    {
+        printf("Hola\n");
+        rotate_a((stack));
+    }
+    if (*(int *)(*stack)->content < *(int *)(*stack)->next->content &&
+        *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
+        *(int *)(*stack)->content < *(int *)(*stack)->next->next->content)
+    {
+        printf("Hola\n");
+        swap_a((stack));
+        rotate_a((stack));
+    }
+    if (*(int *)(*stack)->content < *(int *)(*stack)->next->content &&
+        *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
+        *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
+    {
+        printf("Hola\n");
+        revrotate_a((stack));
+    }
+}
+/*
+void    four_numbers(stack_a, stack_b)
+{
+    
+}
+*/

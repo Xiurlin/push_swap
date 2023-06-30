@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 10:58:47 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/27 00:57:35 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/30 03:08:55 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void    swap_a(t_list **lst)
     (*lst)->next = aux->next;
     aux->next = (*lst);
     (*lst) = aux;
-    if (swap_a != swap)
-        write(1, "sa\n", 3);
+    write(1, "sa\n", 3);
 }
 
 void    swap_b(t_list **lst)
@@ -36,8 +35,7 @@ void    swap_b(t_list **lst)
     (*lst)->next = aux->next;
     aux->next = (*lst);
     (*lst) = aux;
-    if (swap_b != swap)
-        write(1, "sb\n", 3);
+    write(1, "sb\n", 3);
 }
 
 /*
@@ -77,7 +75,7 @@ void    push_a(t_list **lst_a, t_list **lst_b)
 {
     t_list  *aux;
     
-    if (!(*lst_b));
+    if (!(*lst_b))
         return ;
     aux = (*lst_b);
     (*lst_b) = (*lst_b)->next;
@@ -90,7 +88,7 @@ void    push_b(t_list **lst_a, t_list **lst_b)
 {
     t_list  *aux;
     
-    if (!(*lst_a));
+    if (!(*lst_a))
         return ;
     aux = (*lst_a);
     (*lst_a) = (*lst_a)->next;

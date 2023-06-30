@@ -6,12 +6,12 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 02:26:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/27 23:30:31 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/06/30 01:31:01 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
+/*
 void    check_duplicate(t_list **parameters)
 {
     t_list  *current;
@@ -29,13 +29,13 @@ void    check_duplicate(t_list **parameters)
     }
     return ;
 }
-
+*/
 void    error_checker(char **argv)
 {
     size_t  i;
 
     i = 1;
     if (!argv)
-        return(0);
-    check_duplicate(argv);
+        return ;
+    //check_duplicate(argv);
 }

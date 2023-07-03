@@ -6,31 +6,11 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 23:36:27 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/30 05:50:40 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/02 21:27:44 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-/*
-void initialize(t_list **stack_a, int argc, char *argv[])
-{
-    int	nb;
-	int	i;
-
-	i = 1;
-	*stack_a = NULL;
-	while (i < argc)
-	{
-		nb = ft_atoi(argv[i]);
-		printf("%d\n", nb);
-		if (i == 1)
-			(*stack_a) = ft_lstnew(&nb);
-		else
-			ft_lstadd_back(stack_a, ft_lstnew(&nb));
-		i++;
-	}
-}
-*/
 
 void initialize(t_list **stack_a, int argc, char *argv[])
 {
@@ -43,7 +23,7 @@ void initialize(t_list **stack_a, int argc, char *argv[])
     {
         nb = (int *)malloc(sizeof(int));
         *nb = ft_atoi(argv[i]);
-        printf("%d\n", *nb);
+        //printf("%d\n", *nb);
 
         if (i == 1)
             *stack_a = ft_lstnew(nb);

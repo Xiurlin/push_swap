@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/30 04:25:16 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/03 00:55:22 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	main(int argc, char *argv[])
 		return(1);
 	
 	//error_checker(argv);
-	stack_b = NULL;
 	stack_a	= NULL;
+	stack_b = NULL;
 	initialize(&stack_a, argc, argv);
-	printLinkedList(stack_a);
-	if (argc <= 5)
-		sort_small_number(&stack_a, argc);
+	//printLinkedList(stack_a);
+	if (argc <= 6)
+		sort_small_number(&stack_a, &stack_b, argc);
 	return (0);
 }
 

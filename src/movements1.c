@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 10:58:47 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/30 03:08:55 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:10:40 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    swap_a(t_list **lst)
 {
     t_list  *aux;
     
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
+    if (!lst || !(*lst) || !(*lst)->next)
         return ;
     aux = (*lst)->next;
     (*lst)->next = aux->next;
@@ -29,7 +29,7 @@ void    swap_b(t_list **lst)
 {
     t_list  *aux;
     
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
+    if (!lst || !(*lst) || !(*lst)->next)
         return ;
     aux = (*lst)->next;
     (*lst)->next = aux->next;
@@ -45,7 +45,7 @@ void    swap(t_list **lst, ...)
     t_list  *aux;
 
     va_start(ap, lst);
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
+    if (!lst || !(*lst) || !(*lst)->next)
         return ;
     aux = ((*lst)->next);
     ft_lstadd_back(lst, (*lst));
@@ -88,11 +88,11 @@ void    push_b(t_list **lst_a, t_list **lst_b)
 {
     t_list  *aux;
     
-    if (!(*lst_a))
-        return ;
+    //if (!(*lst_a))
+    //    return ;
     aux = (*lst_a);
     (*lst_a) = (*lst_a)->next;
     aux->next = (*lst_b);
     (*lst_b) = aux;
-    write(1, "pa\n", 3);
+    write(1, "pb\n", 3);
 }

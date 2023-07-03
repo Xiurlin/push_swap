@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:23:45 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/30 01:58:46 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/03 04:26:02 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,39 @@
 void    rotate_a(t_list **lst)
 {
     t_list  *aux;
+    t_list  *last;
 
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
-        return ;
     aux = ((*lst)->next);
-    ft_lstadd_back(lst, (*lst));
+    last = ft_lstlast(*lst);
+    last->next = (*lst);
+    (*lst)->next = NULL;
     (*lst) = aux;
     write(1,"ra\n", 3);
 }
+/*
+void	rotate_a(t_list **lst)
+{
+	t_list	*tmp;
+	t_list	*tail;
 
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tail = ft_lstlast(*lst);
+	tmp->next = NULL;
+	tail->next = tmp;
+    write(1, "ra\n", 3);
+}
+*/
 void    rotate_b(t_list **lst)
 {
-    t_list  *aux;
 
-    if (!lst || !(*lst) || !(*lst)->next || !(*lst)->next->next)
-        return ;
+    t_list  *aux;
+    t_list  *last;
+
     aux = ((*lst)->next);
-    ft_lstadd_back(lst, (*lst));
+    last = ft_lstlast(*lst);
+    last->next = (*lst);
+    (*lst)->next = NULL;
     (*lst) = aux;
     write(1,"rb\n", 3);
 }

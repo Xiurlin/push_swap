@@ -6,13 +6,13 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/06/30 04:28:00 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/03 04:32:01 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void    sort_small_number(t_list **stack_a, int argc)
+void    sort_small_number(t_list **stack_a, t_list **stack_b, int argc)
 {
     argc--;
     if (argc == 2)
@@ -25,13 +25,12 @@ void    sort_small_number(t_list **stack_a, int argc)
         three_numbers(stack_a);
         return ;
     }
-    /*
-    if (argc == 4)
+    if (argc == 4 || argc == 5)
     {
-        four_numbers(stack_a, stack_b);
+        four_or_five_numbers(stack_a, stack_b, argc);
         return ;
     }
-    
+    /*
     if (argc == 5)
     {
         five_numbers(stack_a, stack_b);
@@ -54,54 +53,59 @@ void printLinkedList(t_list* head)
 
 void    two_numbers(t_list **stack)
 {
-    if (*(int *)(*stack)->content < *(int *)(*stack)->next->content)
+    if (*(int *)(*stack)->content > *(int *)(*stack)->next->content)
         swap_a(stack);
 }
 
 void    three_numbers(t_list **stack)
 {
-    //printf("Hola\n");
     if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content < *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content < *(int *)(*stack)->next->next->content)
-    {
-        printf("Hola\n");
-        swap_a((stack));
-    }
+        swap_a(stack);
     if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
     {
-        printf("Hola\n");
-        swap_a((stack));
-        revrotate_a((stack));
+        swap_a(stack);
+        revrotate_a(stack);
     }
     if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content < *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
-    {
-        printf("Hola\n");
-        rotate_a((stack));
-    }
+        rotate_a(stack);
     if (*(int *)(*stack)->content < *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content < *(int *)(*stack)->next->next->content)
     {
-        printf("Hola\n");
-        swap_a((stack));
-        rotate_a((stack));
+        swap_a(stack);
+        rotate_a(stack);
     }
     if (*(int *)(*stack)->content < *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
-    {
-        printf("Hola\n");
-        revrotate_a((stack));
-    }
+        revrotate_a(stack);
 }
-/*
-void    four_numbers(stack_a, stack_b)
+
+void    four_or_five_numbers(t_list **stack_a, t_list **stack_b, int size)
 {
-    
+    if (size == 4)
+    {
+        stack_a = find_smallest_number(stack_a, size);
+        push_b(stack_a, stack_b);
+        three_numbers(stack_a);
+        push_a(stack_a, stack_b);
+        printLinkedList(*stack_a);
+    }
+    if (size == 5)
+    {
+        stack_a = find_smallest_number(stack_a, size);
+        push_b(stack_a, stack_b);
+        stack_a = find_smallest_number(stack_a, size);
+        push_b(stack_a, stack_b);
+        three_numbers(stack_a);
+        push_a(stack_a, stack_b);
+        push_a(stack_a, stack_b);
+        printLinkedList(*stack_a);
+    }
 }
-*/

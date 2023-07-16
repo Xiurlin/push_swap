@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/03 04:09:37 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/16 21:26:41 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,29 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
-void printLinkedList(t_list* head);
+void    printLinkedList(t_list* head);
+int     push_swap_atoi(const char *str);
+void    check_spaces(char *str);
+void    check_one_argument(t_list **str);
+void    sort_big(t_list **stack_a, t_list **stack_b, int argc);
+int     max_num_on_top(t_list **stack, int size);
+int     max_or_min_number(int position, int size);
+int     middle_number(t_list **stack, int number, int size);
+int     check_if_min_or_max(int stack_a_number, t_list **stack);
 
 // INITIALIZER
 void    initialize(t_list **stack_a, int argc, char *argv[]);
+char    **new_stack(char **stack);
 
 // ERROR CHECKER
+void    error_checker(t_list ** stack);
+void    check_is_number(char **argv);
+void    check_if_ordered(t_list **stack, int caller);
 void    check_duplicate(t_list **parameters);
-void    error_checker(char **argv);
 
 // ALGORITHMS
-void    sort_small_number(t_list **stack_a, t_list **stack_b, int argc);
+void    sort_small(t_list **stack_a, t_list **stack_b, int argc);
+void    sort_big(t_list **stack_a, t_list **stack_b, int argc);
 void    two_numbers(t_list **stack);
 void    three_numbers(t_list **stack_a);
 void    four_or_five_numbers(t_list **stack_a, t_list **stack_b, int size);

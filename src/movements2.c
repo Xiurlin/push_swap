@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:23:45 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/03 04:26:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/14 03:40:13 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,6 @@ void    rotate_a(t_list **lst)
     (*lst) = aux;
     write(1,"ra\n", 3);
 }
-/*
-void	rotate_a(t_list **lst)
-{
-	t_list	*tmp;
-	t_list	*tail;
-
-	tmp = *lst;
-	*lst = (*lst)->next;
-	tail = ft_lstlast(*lst);
-	tmp->next = NULL;
-	tail->next = tmp;
-    write(1, "ra\n", 3);
-}
-*/
 void    rotate_b(t_list **lst)
 {
 

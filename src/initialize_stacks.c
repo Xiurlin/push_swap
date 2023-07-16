@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 23:36:27 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/02 21:27:44 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/14 03:38:29 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,44 @@
 
 void initialize(t_list **stack_a, int argc, char *argv[])
 {
-    int i;
-	int	*nb;
+    int 	i;
+	int		j;
+	int		*nb;
+	char	**aux;
 
     i = 1;
+	j = 0;
     *stack_a = NULL;
-    while (i < argc)
-    {
-        nb = (int *)malloc(sizeof(int));
-        *nb = ft_atoi(argv[i]);
-        //printf("%d\n", *nb);
-
-        if (i == 1)
-            *stack_a = ft_lstnew(nb);
-        else
-            ft_lstadd_back(stack_a, ft_lstnew(nb));
-
-        i++;
-    }
+	check_is_number(argv);
+	while (i < argc)
+	{
+		check_spaces(argv[i]);
+		if (ft_strchr(argv[i], ' '))
+		{
+			//printf("Este argumento tiene comillas\n");
+			aux = ft_split(argv[i], ' ');
+		}
+		else
+		{
+			//printf("Este argumento NO tiene comillas\n");
+			aux = malloc(sizeof(char *));
+			*aux = argv[i];
+		}
+		while (aux[j])
+		{
+			//printf("%s\n", aux[j]);
+			nb = malloc(sizeof(int));
+			*nb = push_swap_atoi(aux[j]);
+			if (j == 0 && i == 1) 
+				*stack_a = ft_lstnew(nb);
+			else
+				ft_lstadd_back(stack_a, ft_lstnew(nb));
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	//printLinkedList(*stack_a);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 22:30:35 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/16 09:45:54 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/07/30 04:24:33 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,16 @@ int	push_swap_atoi(const char *str)
 		i++;
 	}
 	return (sgn * res);
+}
+
+int ft_strcmp(const char *str1, const char *str2)
+{
+    while (*str1 != '\0' && *str2 != '\0')
+	{
+        if (*str1 != *str2)
+            return (*str1 - *str2);
+        str1++;
+        str2++;
+    }
+    return (*str1 - *str2);
 }

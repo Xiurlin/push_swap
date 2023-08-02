@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/30 04:26:31 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:34:41 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,18 @@
 
 void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int number_position, int min_or_max)
 {
-	printf("El stack_a es: ");
-	printLinkedList(*stack_a);
-	printf("El stack_b es: ");
-	printLinkedList(*stack_b);
-	printf("EL NÚMERO A MOVER ES %d\n", operator_number);
 	if (min_or_max == 0)
 	{
-		printf("Es máximo o mínimo\n");
-		printf("El stack_a es: ");
-		printLinkedList(*stack_a);
-		printf("El stack_b es: ");
-		printLinkedList(*stack_b);
 		move_max_num_on_top(stack_b, ft_lstsize(*stack_b));
-		move_number(stack_a, stack_b, number_position, "move_operator");
-		printf("DESPUÉS DEL MOVE NUMBER\n");
-		printf("El stack_a es: ");
-		printLinkedList(*stack_a);
-		printf("El stack_b es: ");
-		printLinkedList(*stack_b);
+		order_stack(stack_a, number_position);
+		push_b(stack_a, stack_b);	
 		return ;
 	}
 	else
 	{
-		printf("El número %d no es máximo o mínimo en el stack_b\n", operator_number);
 		move_middle_number(stack_a, stack_b, operator_number, number_position);
-		printLinkedList(*stack_b);
-		move_number(stack_a, stack_b, number_position, "move_operator");
-		printLinkedList(*stack_a);
-		printLinkedList(*stack_b);
-		printf("SALE DEL MOVE\n\n\n\n\n");
+		order_stack(stack_a, number_position);
+		push_b(stack_a, stack_b);	
 		return ;
 	}
 }
@@ -75,7 +57,7 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 		node_number++;
 	}
 	*stack_b = stack_b_first_nb;
-	printf("JUST SMALLER NUMBER: %d, ITS POSITION: %d\n", just_smaller_number, just_smaller_number_position);
+	//printf("JUST SMALLER NUMBER: %d, ITS POSITION: %d\n", just_smaller_number, just_smaller_number_position);
 	if (just_smaller_number_position > ft_lstsize(*stack_b)/2)
 	{
 		while (just_smaller_number_position < ft_lstsize(*stack_b))
@@ -155,7 +137,7 @@ void    move_max_num_on_top(t_list **stack, int size)
 	}
 }
 
-void	move_number(t_list **stack_a, t_list **stack_b, int number_position, char *caller)
+void	order_stack(t_list **stack_a, int number_position)
 {
 	if (number_position > ft_lstsize(*stack_a)/2)
 	{
@@ -173,7 +155,4 @@ void	move_number(t_list **stack_a, t_list **stack_b, int number_position, char *
 			number_position--;
 		}
 	}
-	if (ft_strcmp(caller, "push_a_checker") == 0)
-		return ;
-	push_b(stack_a, stack_b);	
 }

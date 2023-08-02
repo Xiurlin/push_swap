@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/30 04:24:18 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:15:05 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int ft_strcmp(const char *str1, const char *str2);
 
 void	push_back(t_list **stack_a, t_list **stack_b);
 void	push_a_checker(t_list **stack_a, t_list **stack_b);
-void	move_just_bigger_number(t_list **stack, int position);
-
-
+int		get_smallest_number_position(t_list **stack_a);
 
 void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int number_position, int min_or_max);
 void	move_max_num_on_top(t_list **stack, int size);
-void	move_number(t_list **stack_a, t_list **stack_b, int number_position, char *caller);
+void	order_stack(t_list **stack_a, int number_position);
 void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number, int number_position);
 
 // INITIALIZER

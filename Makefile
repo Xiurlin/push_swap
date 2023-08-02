@@ -6,7 +6,7 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/17 19:54:56 by drestrep          #+#    #+#              #
-#    Updated: 2023/06/24 10:11:51 by drestrep         ###   ########.fr        #
+#    Updated: 2023/08/02 14:39:33 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT		=		$(LIBFT_DIR)/libft.a
 SRCS		=		$(wildcard	src/*.c)
 
 CC 			= 		gcc
-CFLAGS 		= 		-Wall -Wextra -Werror
+CFLAGS 		= 		-g3 -Wall -Wextra -Werror 
 
 OBJ_DIR		=		obj
 OBJS 		= 		$(addprefix obj/, $(notdir $(SRCS:%.c=%.o)))

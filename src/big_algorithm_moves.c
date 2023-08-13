@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/02 14:34:41 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:44:59 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,12 @@ void    move_max_num_on_top(t_list **stack, int size)
 
 void	order_stack(t_list **stack_a, int number_position)
 {
-	if (number_position > ft_lstsize(*stack_a)/2)
+	if (number_position == -1)
+	{
+		move_max_num_on_top(stack_a, ft_lstsize(*stack_a));
+		rotate_a(stack_a);
+	}
+	else if (number_position > ft_lstsize(*stack_a)/2)
 	{
 		while(number_position < ft_lstsize(*stack_a))
 		{

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/05 18:16:31 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/14 05:51:06 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	main(int argc, char *argv[])
 	else
 		sort_big(&stack_a, &stack_b, argc);
 	
-	printf("El stack_a es: ");
+	/* printf("El stack_a es: ");
 		printLinkedList(stack_a);
 		printf("El stack_b es: ");
 		printLinkedList(stack_b);
-		exit(0);
+		exit(0); */
 	return (0);
 }

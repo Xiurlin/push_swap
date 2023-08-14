@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/06 18:44:59 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/14 05:48:51 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int 
 	else
 	{
 		move_middle_number(stack_a, stack_b, operator_number, number_position);
-		order_stack(stack_a, number_position);
+		//order_stack(stack_a, number_position);
 		push_b(stack_a, stack_b);	
 		return ;
 	}
@@ -86,8 +86,8 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	{
 		while (number_position > 0)
 		{
-			rotate_b(stack_a);
-			just_smaller_number_position--;
+			rotate_a(stack_a);
+			number_position--;
 		}
 	}
 	/* printf("El stack_a es: ");
@@ -139,6 +139,8 @@ void    move_max_num_on_top(t_list **stack, int size)
 
 void	order_stack(t_list **stack_a, int number_position)
 {
+	/* printf("Number position: %d\n", number_position);
+	printf("Stack size: %d\n", ft_lstsize(*stack_a)); */
 	if (number_position == -1)
 	{
 		move_max_num_on_top(stack_a, ft_lstsize(*stack_a));
@@ -146,7 +148,7 @@ void	order_stack(t_list **stack_a, int number_position)
 	}
 	else if (number_position > ft_lstsize(*stack_a)/2)
 	{
-		while(number_position < ft_lstsize(*stack_a))
+		while(number_position < ft_lstsize(*stack_a) - 1)
 		{
 			revrotate_a(stack_a);
 			number_position++;
@@ -160,4 +162,6 @@ void	order_stack(t_list **stack_a, int number_position)
 			number_position--;
 		}
 	}
+	if (number_position == ft_lstsize(*stack_a) - 1)
+		revrotate_a(stack_a);
 }

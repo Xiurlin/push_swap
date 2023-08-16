@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 04:50:23 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/14 05:48:43 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/16 05:54:06 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int max_or_min_number(int position, int size)
 	return(operations);
 }
 
-int     middle_number(t_list **stack, int number, int size)
+int	middle_number(t_list **stack, int number, int size)
 {
 	int node_number;
 	int next_smaller_number;
@@ -180,6 +180,114 @@ void	push_back(t_list **stack_a, t_list **stack_b)
 	smallest_number_position = get_smallest_number_position(stack_a);
 	order_stack(stack_a, smallest_number_position);
 }
+int	get_max_nb_position(t_list **stack_b)
+{
+	t_list	*aux;
+	int 	position;
+	int		node_number;
+	int		max_number;
+
+	aux = *stack_b;
+	position = 0;
+	node_number = 0;
+	max_number = *(int *)(*stack_b)->content;
+	while (*stack_b)
+	{
+		if (*(int *)(*stack_b)->content > max_number)
+		{
+			max_number = *(int *)(*stack_b)->content;
+			position = node_number;
+		}
+		*stack_b = (*stack_b)->next;
+		node_number++;
+	}
+	*stack_b = aux;
+	return (position);
+}
+
+int	get_middle_number_position(t_list **stack_b, int number)
+{
+	int node_number;
+	int next_smaller_number;
+	int next_smaller_number_position;
+	t_list  *aux;
+
+	aux = *stack_b;
+	node_number = 0;
+	next_smaller_number = 0;
+	next_smaller_number_position = 0;
+	while (*stack_b)
+	{
+		//printf("Next_smaller_number_position for %d: %d\n", number, next_smaller_number_position);
+		if (next_smaller_number == 0 && *(int *)(*stack_b)->content < number)
+		{
+			next_smaller_number = *(int *)(*stack_b)->content;
+			next_smaller_number_position = node_number;
+		}
+		if (*(int *)(*stack_b)->content < number && *(int *)(*stack_b)->content > next_smaller_number)
+		{
+			//printf("Nunca entra aquí?\n");
+			next_smaller_number = *(int *)(*stack_b)->content;
+			next_smaller_number_position = node_number;
+		}
+		*stack_b = (*stack_b)->next;
+		node_number++;
+	}
+	*stack_b = aux;
+	return (next_smaller_number_position);
+}
+
+	/* t_list	*first_node;
+	if (operator_position > ft_lstsize(stack_a)/2)
+	{
+		while (times_rotate <= ft_lstsize(stack_a))
+		{
+			revrotate(stack_a, stack_b);
+			times_rotate++;
+		}
+	}
+	else
+	{
+		while (times_rotate > 0)
+		{
+			rotate(stack_a, stack_b);
+			times_rotate--;
+		}
+	}
+	first_node = stack_a; */
+
+int	get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, int stack_b_number_position, int total_operations)
+{
+	int		operations;
+
+	//printf("\nINSIDE GET_DOUBLE_ROTATE:\nOperator Position: %d\nStack_b number_position: %d\n\n", operator_position, stack_b_number_position);
+	operations = 0;
+	if (operator_position > ft_lstsize(stack_a)/2 && stack_b_number_position > ft_lstsize(stack_b)/2)
+	{
+		operations = ft_lstsize(stack_a) - operator_position + 1;
+		if ((ft_lstsize(stack_b) - stack_b_number_position) < operations)
+		{
+			operator_position = operator_position - stack_b_number_position;
+			operations = ft_lstsize(stack_b) - stack_b_number_position + operator_position + 1;
+		}
+	}
+	else if (operator_position <= ft_lstsize(stack_a)/2 && stack_b_number_position <= ft_lstsize(stack_b)/2)
+	{
+		//printf("\nEntra aquí?\n");
+		operations = operator_position + 1;
+		//printf("Operations: %d\n", operations);
+		//printf("Operator position: %d\n", operator_position);
+		if (stack_b_number_position < operator_position)
+		{
+			operator_position = operator_position - stack_b_number_position;
+			operations = stack_b_number_position + operator_position + 1;
+		}
+	}
+	//printf("Total operations INSIDE GET_DOUBLE_ROTATE: %d\n", total_operations);
+	if (operations < total_operations && operations != 0)
+		total_operations = operations;
+	return (total_operations);
+}
 
 void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 {
@@ -210,16 +318,23 @@ void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 		stack_a_first_nb = *stack_a;
 		while (*stack_a)
 		{
-			/* printf("El stack_a es: ");
+			/* printf ("Iterator: %d\n", iterator);
+			printf("El stack_a es: ");
 			printLinkedList(stack_a_first_nb);
 			printf("El stack_b es: ");
 			printLinkedList(*stack_b); */
 			operator_number	= *(int *)(*stack_a)->content;
 			min_or_max = check_if_min_or_max(stack_b, operator_number);
-			//printf("Total operations for %d is: %d\n", *(int *)(*stack_a)->content, total_operations);
+			//printf("Operator number %d is min or max?: %d\n", operator_number, min_or_max);
 			if (min_or_max == 0)
 			{
 				total_operations = max_num_on_top(stack_b, ft_lstsize(*stack_b)) + max_or_min_number(position, ft_lstsize(stack_a_first_nb)) + 1;
+				/* printf("El stack_b es: ");
+				printLinkedList(*stack_b); */
+				//printf("Total operations: %d\n", total_operations);
+				//printf("Max number position in stack_b: %d\n", get_max_nb_position(stack_b));
+				total_operations = get_double_rotate(stack_a_first_nb, *stack_b, position, get_max_nb_position(stack_b), total_operations);
+				//printf("Total operations: %d\n", total_operations);
 				if (minimum_operations == 0)
 					minimum_operations = total_operations;
 				if (total_operations < minimum_operations)
@@ -232,6 +347,11 @@ void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 			else
 			{
 				total_operations = middle_number(stack_b, operator_number, ft_lstsize(*stack_b)) + max_or_min_number(position, ft_lstsize(stack_a_first_nb)) + 1;
+				/* printf("El stack_a es: ");
+				printLinkedList(stack_a_first_nb);*/
+				printf("Middle number position is: %d\n", get_middle_number_position(stack_b, position));
+				
+				total_operations = get_double_rotate(stack_a_first_nb, *stack_b, position, get_middle_number_position(stack_b, operator_number), total_operations);
 				if (minimum_operations == 0)
 					minimum_operations = total_operations;
 				if (total_operations < minimum_operations)
@@ -240,10 +360,17 @@ void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 					operator_position = position;
 					operator_number = *(int *)(*stack_a)->content;
 				}
-				
 			}
-			//printf("Total operations for %d is: %d\n", *(int *)(*stack_a)->content, total_operations);
+			printf("Total operations for %d is: %d\nIterator: %d\n", operator_number, total_operations, iterator);
 			*stack_a = (*stack_a)->next;
+			if (iterator == 27)
+			{
+				printf("El stack_a es: ");
+				printLinkedList(stack_a_first_nb);
+				printf("El stack_b es: ");
+				printLinkedList(*stack_b);
+				exit(0);
+			}
 			/* if (iterator == 5000)
 			{
 				printf("El stack_a es: ");
@@ -268,15 +395,17 @@ void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 		//operator_number = *(int *)(stack_a_first_nb)->content;
 		//printf("OPERATOR NUMBER: %d\n", operator_number);
 		min_or_max = check_if_min_or_max(stack_b, operator_number);
-			/* printf("El stack_a es: ");
-			printLinkedList(stack_a_first_nb);
-			printf("El stack_b es: ");
-			printLinkedList(*stack_b);
-			printf("Operator number: %d\nOperator position: %d\nOps Required: %d\n", operator_number, operator_position, minimum_operations);
-			printf("Iterator: %d\n", iterator); */
+		printf("El stack_a es: ");
+		printLinkedList(stack_a_first_nb);
+		printf("El stack_b es: ");
+		printLinkedList(*stack_b);
+		printf("Operator number: %d\nOperator position: %d\nOps Required: %d\n", operator_number, operator_position, minimum_operations);
+		printf("Iterator: %d\n", iterator);
 		/* if (iterator == 846)
 			exit(0); */
 		move_operator(stack_a, stack_b, operator_number, operator_position, min_or_max);
+		/* printf("El stack_b es: ");
+		printLinkedList(*stack_b); */
 	}
 	push_back(stack_a, stack_b);
 }

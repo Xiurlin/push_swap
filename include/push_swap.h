@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/02 14:15:05 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:54:29 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int 	max_or_min_number(int position, int size);
 int		middle_number(t_list **stack, int number, int size);
 int     check_if_min_or_max(t_list **stack, int stack_a_number);
 
-int ft_strcmp(const char *str1, const char *str2);
+int		ft_strcmp(const char *str1, const char *str2);
+void	ft_free(t_list **lst);
+int		get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, int stack_b_number_position, int total_operations);
+int		get_max_nb_position(t_list **stack_b);
+int		get_middle_number_position(t_list **stack_b, int number);
 
 
 void	push_back(t_list **stack_a, t_list **stack_b);

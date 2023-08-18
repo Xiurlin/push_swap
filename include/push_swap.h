@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/16 03:54:29 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/18 01:39:57 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ void	ft_free(t_list **lst);
 int		get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, int stack_b_number_position, int total_operations);
 int		get_max_nb_position(t_list **stack_b);
 int		get_middle_number_position(t_list **stack_b, int number);
+void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position);
+//int		check_double_rotate(t_list **stack_a, t_list **stack_b,
 
 
 void	push_back(t_list **stack_a, t_list **stack_b);
 void	push_a_checker(t_list **stack_a, t_list **stack_b);
 int		get_smallest_number_position(t_list **stack_a);
 
-void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int number_position, int min_or_max);
+void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max);
 void	move_max_num_on_top(t_list **stack, int size);
 void	order_stack(t_list **stack_a, int number_position);
 void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number, int number_position);

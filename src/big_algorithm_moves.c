@@ -6,24 +6,54 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/14 05:48:51 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/18 02:19:47 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int number_position, int min_or_max)
+void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position)
 {
+	t_list	*first_node;
+	int		stack_b_number;
+
+	first_node = *stack_a;
+	stack_b_number = get_max_nb_position(stack_b);
+	if (operator_position > ft_lstsize(stack_a)/2 && stack_b_number > ft_lstsize(stack_a)/2)
+	{
+		while
+		while (times_rotate <= ft_lstsize(stack_a))
+		{
+			revrotate(stack_a, stack_b);
+			times_rotate++;
+		}
+	}
+	else if (operator_position < ft_lstsize(stack_a)/2 && stack_b_number < ft_lstsize(stack_a)/2)
+	{
+		while (times_rotate > 0)
+		{
+			rotate(stack_a, stack_b);
+			times_rotate--;
+		}
+	}
+	first_node = stack_a;
+}
+
+void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max)
+{
+	//double_rotate = check_double_rotate(stack_a, stack_b, operator_number, number_position);
 	if (min_or_max == 0)
 	{
+		printf("Entraría aquí el %d?\n", operator_number);
+		double_rotate(stack_a, stack_b, operator_position);
 		move_max_num_on_top(stack_b, ft_lstsize(*stack_b));
-		order_stack(stack_a, number_position);
+		order_stack(stack_a, operator_position);
 		push_b(stack_a, stack_b);	
 		return ;
 	}
 	else
 	{
-		move_middle_number(stack_a, stack_b, operator_number, number_position);
+		move_middle_number(stack_a, stack_b, operator_number, operator_position);
 		//order_stack(stack_a, number_position);
 		push_b(stack_a, stack_b);	
 		return ;

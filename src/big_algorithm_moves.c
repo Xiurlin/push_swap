@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/18 02:19:47 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/21 06:55:43 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 
 void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position)
 {
-	t_list	*first_node;
-	int		stack_b_number;
+	//t_list	*first_node;
+	int		stack_b_number_position;
 
-	first_node = *stack_a;
-	stack_b_number = get_max_nb_position(stack_b);
-	if (operator_position > ft_lstsize(stack_a)/2 && stack_b_number > ft_lstsize(stack_a)/2)
+	//first_node = *stack_a;
+	stack_b_number_position = get_max_nb_position(stack_b);
+	if (operator_position > ft_lstsize(*stack_a)/2 && stack_b_number_position > ft_lstsize(*stack_b)/2)
 	{
-		while
-		while (times_rotate <= ft_lstsize(stack_a))
+		while (operator_position <= ft_lstsize(*stack_a) || stack_b_number_position <= ft_lstsize(*stack_b))
 		{
 			revrotate(stack_a, stack_b);
-			times_rotate++;
+			operator_position++;
+			stack_b_number_position++;
 		}
 	}
-	else if (operator_position < ft_lstsize(stack_a)/2 && stack_b_number < ft_lstsize(stack_a)/2)
+	else if (operator_position <= ft_lstsize(*stack_a)/2 && stack_b_number_position <= ft_lstsize(*stack_b)/2)
 	{
-		while (times_rotate > 0)
+		//printf("\nOperator position: %d\nStack_b_number_position: %d\n", operator_position, stack_b_number_position);
+		while (operator_position > 0 || stack_b_number_position > 0)
 		{
 			rotate(stack_a, stack_b);
-			times_rotate--;
-		}
+			operator_position--;
+			stack_b_number_position--;
+		}/* 
+		printf("El stack_a es: ");
+		printLinkedList(*stack_a);
+		printf("El stack_b es: ");
+		printLinkedList(*stack_b); */
 	}
-	first_node = stack_a;
+	//*stack_a = first_node;
 }
 
 void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max)
@@ -44,18 +50,18 @@ void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int 
 	//double_rotate = check_double_rotate(stack_a, stack_b, operator_number, number_position);
 	if (min_or_max == 0)
 	{
-		printf("Entraría aquí el %d?\n", operator_number);
+		//printf("Entraría aquí el %d?\n", operator_number);
 		double_rotate(stack_a, stack_b, operator_position);
 		move_max_num_on_top(stack_b, ft_lstsize(*stack_b));
-		order_stack(stack_a, operator_position);
-		push_b(stack_a, stack_b);	
+		//order_stack(stack_a, operator_position);
+		push_b(stack_a, stack_b);
 		return ;
 	}
 	else
 	{
 		move_middle_number(stack_a, stack_b, operator_number, operator_position);
 		//order_stack(stack_a, number_position);
-		push_b(stack_a, stack_b);	
+		push_b(stack_a, stack_b);
 		return ;
 	}
 }
@@ -100,7 +106,7 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	{
 		while (just_smaller_number_position > 0)
 		{
-			rotate_b(stack_b);
+			rotate_a_or_b(stack_b, 'b');
 			just_smaller_number_position--;
 		}
 	}
@@ -116,7 +122,7 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	{
 		while (number_position > 0)
 		{
-			rotate_a(stack_a);
+			rotate_a_or_b(stack_a, 'a');
 			number_position--;
 		}
 	}
@@ -161,7 +167,7 @@ void    move_max_num_on_top(t_list **stack, int size)
 	{
 		while (max_number_position > 0)
 		{
-			rotate_b(stack);
+			rotate_a_or_b(stack, 'b');
 			max_number_position--;
 		}
 	}
@@ -171,10 +177,12 @@ void	order_stack(t_list **stack_a, int number_position)
 {
 	/* printf("Number position: %d\n", number_position);
 	printf("Stack size: %d\n", ft_lstsize(*stack_a)); */
+	
 	if (number_position == -1)
 	{
-		move_max_num_on_top(stack_a, ft_lstsize(*stack_a));
-		rotate_a(stack_a);
+		FUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCKKKKKKKKKKK
+		//move_max_num_on_top(stack_a, ft_lstsize(*stack_a));
+		rotate_a_or_b(stack_a, 'a');
 	}
 	else if (number_position > ft_lstsize(*stack_a)/2)
 	{
@@ -188,7 +196,7 @@ void	order_stack(t_list **stack_a, int number_position)
 	{
 		while (number_position > 0)
 		{
-			rotate_a(stack_a);
+			rotate_a_or_b(stack_a, 'a');
 			number_position--;
 		}
 	}

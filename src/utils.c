@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 22:30:35 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/30 04:24:33 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/21 05:42:12 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_list  **find_smallest_number(t_list **stack, int size)
     {
         while (i > 0)
         {
-            rotate_a(stack);
+            rotate_a_or_b(stack, 'a');
             i--;
         }
     }

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/21 05:41:47 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/24 11:53:47 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void    three_numbers(t_list **stack)
         *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
     {
         swap_a(stack);
-        revrotate_a(stack);
+        revrotate_a_or_b(stack, 'a');
     }
     if (*(int *)(*stack)->content > *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content < *(int *)(*stack)->next->next->content &&
@@ -87,7 +87,7 @@ void    three_numbers(t_list **stack)
     if (*(int *)(*stack)->content < *(int *)(*stack)->next->content &&
         *(int *)(*stack)->next->content > *(int *)(*stack)->next->next->content &&
         *(int *)(*stack)->content > *(int *)(*stack)->next->next->content)
-        revrotate_a(stack);
+        revrotate_a_or_b(stack, 'a');
     //printLinkedList(*stack);
 }
 

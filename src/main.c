@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/21 06:54:52 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:27:10 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	main(int argc, char *argv[])
 	if (argc <= 5)
 		sort_small(&stack_a, &stack_b, argc);
 	else
-		sort_big(&stack_a, &stack_b, argc);
-	
+		sort_big(&stack_a, &stack_b, argc);	
 	printf("El stack_a es: ");
 	printLinkedList(stack_a);
 	printf("El stack_b es: ");

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/18 01:39:57 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:24:17 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_free(t_list **lst);
 int		get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, int stack_b_number_position, int total_operations);
 int		get_max_nb_position(t_list **stack_b);
 int		get_middle_number_position(t_list **stack_b, int number);
-void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position);
+void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max);
 //int		check_double_rotate(t_list **stack_a, t_list **stack_b,
 
 
@@ -68,17 +68,15 @@ void four_or_five_numbers(t_list **stack_a, t_list **stack_b, int size);
 // OPERATIONS
 t_list **find_smallest_number(t_list **stack_a, int size);
 
-void swap_a(t_list **lst);
-void swap_b(t_list **lst);
-void swap(t_list **lst_a, t_list **lst_b);
-void push_a(t_list **lst_a, t_list **lst_b);
-void push_b(t_list **lst_a, t_list **lst_b);
+void	swap_a(t_list **lst);
+void	swap_b(t_list **lst);
+void	swap(t_list **lst_a, t_list **lst_b);
+void	push_a(t_list **lst_a, t_list **lst_b);
+void	push_b(t_list **lst_a, t_list **lst_b);
 // void    rotate_a(t_list **lst);
-void rotate_b(t_list **lst);
-void rotate(t_list **lst_a, t_list **lst_b);
-void rotate_a(t_list **lst);
-void revrotate_a(t_list **lst);
-void revrotate_b(t_list **lst);
-void revrotate(t_list **lst_a, t_list **lst_b);
+void	rotate(t_list **lst_a, t_list **lst_b);
+void	rotate_a_or_b(t_list **lst, char c);
+void	revrotate_a_or_b(t_list **lst, char c);
+void	revrotate(t_list **lst_a, t_list **lst_b);
 
 #endif

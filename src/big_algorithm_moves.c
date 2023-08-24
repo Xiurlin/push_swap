@@ -6,19 +6,25 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 04:16:37 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/21 06:55:43 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:23:57 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position)
+void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max)
 {
 	//t_list	*first_node;
 	int		stack_b_number_position;
 
 	//first_node = *stack_a;
-	stack_b_number_position = get_max_nb_position(stack_b);
+	//printf("Entra aquí?\n");
+	if (min_or_max == 0)
+		stack_b_number_position = get_max_nb_position(stack_b);
+	if (min_or_max == 1)
+		stack_b_number_position = get_middle_number_position(stack_b, operator_number);
+	if (operator_position == 0 || stack_b_number_position == 0)
+		return ;
 	if (operator_position > ft_lstsize(*stack_a)/2 && stack_b_number_position > ft_lstsize(*stack_b)/2)
 	{
 		while (operator_position <= ft_lstsize(*stack_a) || stack_b_number_position <= ft_lstsize(*stack_b))
@@ -47,11 +53,22 @@ void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_position)
 
 void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max)
 {
+		/* printf("El stack_a  es: ");
+		printLinkedList(*stack_a);
+		printf("El stack_b  es: ");
+		printLinkedList(*stack_b); */
 	//double_rotate = check_double_rotate(stack_a, stack_b, operator_number, number_position);
+	int	min_or_max;
+
+	min_or_max = check_if_min_or_max (stack_a, operator_number);
 	if (min_or_max == 0)
 	{
 		//printf("Entraría aquí el %d?\n", operator_number);
-		double_rotate(stack_a, stack_b, operator_position);
+		double_rotate(stack_a, stack_b, operator_number, operator_position, min_or_max);
+		/* printf("El stack_a después del move_operator es: ");
+		printLinkedList(stack_a_first_nb);
+		printf("El stack_b después del move_operator es: ");
+		printLinkedList(*stack_b); */
 		move_max_num_on_top(stack_b, ft_lstsize(*stack_b));
 		//order_stack(stack_a, operator_position);
 		push_b(stack_a, stack_b);
@@ -59,6 +76,9 @@ void	move_operator(t_list **stack_a, t_list **stack_b, int operator_number, int 
 	}
 	else
 	{
+		printf("Entra aquí?\n");
+		double_rotate(stack_a, stack_b, operator_position);
+		printf("Ha hecho algo?\n");
 		move_middle_number(stack_a, stack_b, operator_number, operator_position);
 		//order_stack(stack_a, number_position);
 		push_b(stack_a, stack_b);
@@ -94,11 +114,13 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	}
 	*stack_b = stack_b_first_nb;
 	//printf("JUST SMALLER NUMBER: %d, ITS POSITION: %d\n", just_smaller_number, just_smaller_number_position);
+	printf("Operator number: %d\nOperator position: %d\n", operator_number, number_position);
+	double_rotate(stack_a, stack_b, number_position);
 	if (just_smaller_number_position > ft_lstsize(*stack_b)/2)
 	{
 		while (just_smaller_number_position < ft_lstsize(*stack_b))
 		{
-			revrotate_b(stack_b);
+			revrotate_a_or_b(stack_b, 'b');
 			just_smaller_number_position++;
 		}
 	}
@@ -114,7 +136,7 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	{
 		while (number_position < ft_lstsize(*stack_a))
 		{
-			revrotate_a(stack_a);
+			revrotate_a_or_b(stack_a, 'a');
 			number_position++;
 		}
 	}
@@ -122,6 +144,7 @@ void	move_middle_number(t_list **stack_a, t_list **stack_b, int operator_number,
 	{
 		while (number_position > 0)
 		{
+			printf("Entra aquí??\n");
 			rotate_a_or_b(stack_a, 'a');
 			number_position--;
 		}
@@ -159,7 +182,7 @@ void    move_max_num_on_top(t_list **stack, int size)
 	{
 		while (max_number_position < size)
 		{
-			revrotate_b(stack);
+			revrotate_a_or_b(stack, 'b');
 			max_number_position++;
 		}
 	}
@@ -177,18 +200,30 @@ void	order_stack(t_list **stack_a, int number_position)
 {
 	/* printf("Number position: %d\n", number_position);
 	printf("Stack size: %d\n", ft_lstsize(*stack_a)); */
-	
-	if (number_position == -1)
+	/* if (number_position == -1)
 	{
-		FUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCKKKKKKKKKKK
+		//FUUUUUUUUUUUUUUUUUUUUUCCCCCCCCCKKKKKKKKKKK
 		//move_max_num_on_top(stack_a, ft_lstsize(*stack_a));
 		rotate_a_or_b(stack_a, 'a');
+	} */
+	if (number_position == -1)
+	{
+		number_position = get_smallest_number_position(stack_a);
+		//printf ("Number position: %d\nList size: %d\n", number_position, ft_lstsize(*stack_a));
+		order_stack(stack_a, number_position);
+		return ;
+	}
+	if (number_position == ft_lstsize(*stack_a) - 1)
+	{
+		//printf("Debería entrar aquí\n");
+		revrotate_a_or_b(stack_a, 'a');
 	}
 	else if (number_position > ft_lstsize(*stack_a)/2)
 	{
-		while(number_position < ft_lstsize(*stack_a) - 1)
+		//while(number_position < ft_lstsize(*stack_a) - 1)
+		while(number_position < ft_lstsize(*stack_a))
 		{
-			revrotate_a(stack_a);
+			revrotate_a_or_b(stack_a, 'a');
 			number_position++;
 		}
 	}
@@ -200,6 +235,4 @@ void	order_stack(t_list **stack_a, int number_position)
 			number_position--;
 		}
 	}
-	if (number_position == ft_lstsize(*stack_a) - 1)
-		revrotate_a(stack_a);
 }

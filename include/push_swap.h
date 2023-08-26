@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:48 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/25 11:54:45 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/26 16:48:33 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_free(t_list **lst);
 int		get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, int stack_b_number_position, int total_operations);
 int		get_max_nb_position(t_list **stack_b);
 int		get_middle_number_position(t_list **stack_b, int number);
-void	double_rotate(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max);
+int	double_rotate(t_list **stack_a, t_list **stack_b, int operator_number, int operator_position, int min_or_max);
 //int		check_double_rotate(t_list **stack_a, t_list **stack_b,
 
 

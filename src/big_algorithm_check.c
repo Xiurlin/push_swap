@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 04:50:23 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/25 14:40:08 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/26 21:16:05 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -398,36 +398,40 @@ void    sort_big(t_list **stack_a, t_list **stack_b, int argc)
 		} */
 		printf("Iterator: %d\n", iterator);
 		//if (iterator == 741)
-		/* if (iterator == 711)
+		/* if (iterator == 648)
 		{
 			printf("\n\n\nThe operator number is: %d\n", operator_number);
+			printf("Operations required: %d\n", minimum_operations);
 			printf("El stack_a es: ");
 			printLinkedList(stack_a_first_nb);
 			printf("El stack_b es: ");
 			printLinkedList(*stack_b);
-			exit(0);
+			//exit(0);
 		} */
-		/* if (iterator == 356)
+		/* if (iterator == 4760)
 			exit(0); */
 		//printf("\n\n\nThe operator number is: %d\n", operator_number);
 		printf("El stack_a es: ");
-		printLinkedList(stack_a_first_nb);
+		printLinkedList(*stack_a);
 		printf("El stack_b es: ");
 		printLinkedList(*stack_b);
 		move_operator(stack_a, stack_b, operator_number, operator_position, min_or_max);
-		if (iterator == 711)
+		printf("El stack_a después del move_operator es: ");
+		printLinkedList(*stack_a);
+		printf("El stack_b después del move_operator es: ");
+		printLinkedList(*stack_b);
+		printf("\n\n\n\n\n");
+		if (iterator == 4760)
+			exit(0);
+		/* if (iterator == 741)
 		{
 			printf("El stack_a es: ");
 			printLinkedList(*stack_a);
 			printf("El stack_b es: ");
 			printLinkedList(*stack_b);
 			exit(0);
-		}
-		/* printf("El stack_a después del move_operator es: ");
-		printLinkedList(*stack_a);
-		printf("El stack_b después del move_operator es: ");
-		printLinkedList(*stack_b);
-		printf("\n\n\n\n\n"); */
+		} */
 	}
+	exit(0);
 	push_back(stack_a, stack_b);
 }

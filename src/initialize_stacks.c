@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 23:36:27 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/28 05:03:36 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/28 07:09:53 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	initialize(t_list **stack_a, int argc, char *argv[])
 		i++;
 	}
 }
-/*
-long	ft_atol(const char *str)
+
+int	push_swap_atoi(const char *str)
 {
 	int	res;
 	int	sgn;
@@ -72,4 +72,3 @@ long	ft_atol(const char *str)
 	}
 	return (sgn * res);
 }
-*/

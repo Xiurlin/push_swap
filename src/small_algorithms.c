@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 09:30:13 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/28 04:27:26 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/28 07:11:00 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,42 @@ void	four_or_five_numbers(t_list **stack_a, t_list **stack_b, int size)
 		push_a(stack_a, stack_b);
 		push_a(stack_a, stack_b);
 	}
+}
+
+t_list	**find_smallest_number(t_list **stack, int size)
+{
+	int     i;
+	int     min_nb;
+	t_list  *aux;
+	
+	i = 0;
+	min_nb = *(int *)(*stack)->content;
+	aux = (*stack);
+	while ((*stack))
+	{
+		if (*(int *)(*stack)->content < min_nb)
+			min_nb = *(int *)(*stack)->content;
+		(*stack) = (*stack)->next;
+	}
+	(*stack) = aux;
+	while (*(int *)(*stack)->content != min_nb)
+	{
+		(*stack) = (*stack)->next;
+		i++;
+	}
+	(*stack) = aux;
+	if (i < size/2)
+	{
+		while (i > 0)
+		{
+			rotate_a_or_b(stack, 'a');
+			i--;
+		}
+	}
+	else
+	{
+		while (*(int *)(*stack)->content != min_nb)
+			revrotate_a_or_b(stack, 'a');
+	}
+	return(stack);
 }

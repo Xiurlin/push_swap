@@ -6,48 +6,48 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 22:30:35 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/24 11:54:15 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/28 04:27:06 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_list  **find_smallest_number(t_list **stack, int size)
+t_list	**find_smallest_number(t_list **stack, int size)
 {
-    int     i;
-    int     min_nb;
-    t_list  *aux;
-    
-    i = 0;
-    min_nb = *(int *)(*stack)->content;
-    aux = (*stack);
-    while ((*stack))
-    {
-        if (*(int *)(*stack)->content < min_nb)
-            min_nb = *(int *)(*stack)->content;
-        (*stack) = (*stack)->next;
-    }
-    (*stack) = aux;
-    while (*(int *)(*stack)->content != min_nb)
-    {
-        (*stack) = (*stack)->next;
-        i++;
-    }
-    (*stack) = aux;
-    if (i < size/2)
-    {
-        while (i > 0)
-        {
-            rotate_a_or_b(stack, 'a');
-            i--;
-        }
-    }
-    else
-    {
-        while (*(int *)(*stack)->content != min_nb)
-            revrotate_a_or_b(stack, 'a');
-    }
-    return(stack);
+	int     i;
+	int     min_nb;
+	t_list  *aux;
+	
+	i = 0;
+	min_nb = *(int *)(*stack)->content;
+	aux = (*stack);
+	while ((*stack))
+	{
+		if (*(int *)(*stack)->content < min_nb)
+			min_nb = *(int *)(*stack)->content;
+		(*stack) = (*stack)->next;
+	}
+	(*stack) = aux;
+	while (*(int *)(*stack)->content != min_nb)
+	{
+		(*stack) = (*stack)->next;
+		i++;
+	}
+	(*stack) = aux;
+	if (i < size/2)
+	{
+		while (i > 0)
+		{
+			rotate_a_or_b(stack, 'a');
+			i--;
+		}
+	}
+	else
+	{
+		while (*(int *)(*stack)->content != min_nb)
+			revrotate_a_or_b(stack, 'a');
+	}
+	return(stack);
 }
 
 
@@ -76,14 +76,14 @@ int	push_swap_atoi(const char *str)
 	return (sgn * res);
 }
 
-int ft_strcmp(const char *str1, const char *str2)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-    while (*str1 != '\0' && *str2 != '\0')
+	while (*str1 != '\0' && *str2 != '\0')
 	{
-        if (*str1 != *str2)
-            return (*str1 - *str2);
-        str1++;
-        str2++;
-    }
-    return (*str1 - *str2);
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
 }

@@ -6,40 +6,35 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 23:36:27 by drestrep          #+#    #+#             */
-/*   Updated: 2023/07/14 03:38:29 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/28 05:03:36 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void initialize(t_list **stack_a, int argc, char *argv[])
+void	initialize(t_list **stack_a, int argc, char *argv[])
 {
-    int 	i;
+	int 	i;
 	int		j;
 	int		*nb;
 	char	**aux;
 
-    i = 1;
+	i = 1;
 	j = 0;
-    *stack_a = NULL;
+	*stack_a = NULL;
 	check_is_number(argv);
 	while (i < argc)
 	{
 		check_spaces(argv[i]);
 		if (ft_strchr(argv[i], ' '))
-		{
-			//printf("Este argumento tiene comillas\n");
 			aux = ft_split(argv[i], ' ');
-		}
 		else
 		{
-			//printf("Este argumento NO tiene comillas\n");
 			aux = malloc(sizeof(char *));
 			*aux = argv[i];
 		}
 		while (aux[j])
 		{
-			//printf("%s\n", aux[j]);
 			nb = malloc(sizeof(int));
 			*nb = push_swap_atoi(aux[j]);
 			if (j == 0 && i == 1) 
@@ -51,9 +46,7 @@ void initialize(t_list **stack_a, int argc, char *argv[])
 		j = 0;
 		i++;
 	}
-	//printLinkedList(*stack_a);
 }
-
 /*
 long	ft_atol(const char *str)
 {

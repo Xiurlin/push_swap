@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/26 16:54:00 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/28 04:34:40 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,10 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	initialize(&stack_a, argc, argv);
 	argc = ft_lstsize(stack_a);
-	//printf("El tamaño de la lista es de %d\n", argc);
 	error_checker(&stack_a);
 	if (argc <= 5)
 		sort_small(&stack_a, &stack_b, argc);
 	else
 		sort_big(&stack_a, &stack_b, argc);	
-	/* printf("El stack_a es: ");
-	printLinkedList(stack_a);
-	printf("El stack_b es: ");
-	printLinkedList(stack_b); */
-	//ft_free(&stack_a);
 	return (0);
 }

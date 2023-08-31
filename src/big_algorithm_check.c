@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 04:50:23 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/28 07:01:18 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/31 02:35:12 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ int	get_double_rotate(t_list *stack_a, t_list *stack_b, int operator_position, i
 	return (total_operations);
 }
 
-void	sort_big(t_list **stack_a, t_list **stack_b, int argc)
+void	sort_big(t_list **stack_a, t_list **stack_b)
 {
-	argc = 0;
-
 	int position;
 	int min_or_max;
 	int total_operations = 0;

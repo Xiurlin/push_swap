@@ -6,13 +6,11 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 06:49:19 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/28 06:50:08 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/31 04:02:37 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-
 
 int	get_middle_number_position(t_list **stack_b, int number)
 {

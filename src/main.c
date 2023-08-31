@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:33:56 by drestrep          #+#    #+#             */
-/*   Updated: 2023/08/28 04:34:40 by drestrep         ###   ########.fr       */
+/*   Updated: 2023/08/31 02:37:22 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	main(int argc, char *argv[])
 	if (argc <= 5)
 		sort_small(&stack_a, &stack_b, argc);
 	else
-		sort_big(&stack_a, &stack_b, argc);	
+		sort_big(&stack_a, &stack_b);	
 	return (0);
 }
